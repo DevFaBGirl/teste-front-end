@@ -1,4 +1,4 @@
-# Teste Técnico — Vaga Front-End Econverse
+# Teste Técnico: Vaga Front-End Econverse
 
 Projeto desenvolvido como parte do processo seletivo para a vaga de Desenvolvedor Front-End na Econverse.
 
