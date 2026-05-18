@@ -4,7 +4,10 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 48px $spacing-md 100px;
-  
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 24px 16px 48px;
+  }
 }
 
 .title {
@@ -35,10 +38,18 @@
   height: 40px;
   margin-bottom: $spacing-lg;
   border: 1px solid $color-gray-light;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .tab {
   flex: 1;
+  flex-shrink: 0;
   height: 40px;
   background: $color-white;
   border: none;
@@ -52,7 +63,7 @@
   letter-spacing: 0.3px;
   cursor: pointer;
   transition: color 0.2s, background 0.2s;
-  padding: 0 2px;
+  padding: 0 12px;
 
   &:last-child {
     border-right: none;
@@ -60,6 +71,11 @@
 
   &:hover {
     color: $color-primary;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 11px;
+    padding: 0 10px;
   }
 }
 
@@ -113,11 +129,19 @@
   z-index: 1;
 
   &:first-child {
-    left: -40px;
+    left: -20px;
+
+    @media (max-width: $breakpoint-tablet) {
+      left: -12px;
+    }
   }
 
   &:last-child {
-    right: -40px;
+    right: -20px;
+
+    @media (max-width: $breakpoint-tablet) {
+      right: -12px;
+    }
   }
 
   &:hover:not(:disabled) {
@@ -134,14 +158,19 @@
 .grid {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   gap: $spacing-md;
 
+  
+  grid-template-columns: repeat(4, 1fr);
+
+ 
   @media (max-width: $breakpoint-tablet) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (max-width: $breakpoint-mobile) {
-    grid-template-columns: 1fr;
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 }

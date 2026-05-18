@@ -89,19 +89,37 @@
 }
 
 @media (max-width: $breakpoint-tablet) {
+  .card {
+    height: 260px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .content {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 600px) {
   .grid {
     flex-direction: column;
   }
 
   .card {
-    height: 280px;
+    height: 220px;
   }
 
   .title {
-    font-size: 28px;
+    font-size: 22px;
+  }
+
+  .description {
+    font-size: 14px;
   }
 
   .content {
-    padding: 24px;
+    padding: 20px;
   }
 }
