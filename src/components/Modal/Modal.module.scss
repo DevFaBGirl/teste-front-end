@@ -3,7 +3,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: $color-overlay-dark;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -126,7 +126,7 @@
 
 .description {
   font-size: $font-size-md;
-  color: #808080;
+  color: $color-gray-text;
   line-height: 1.6;
   margin-top: $spacing-sm;
   margin-bottom: $spacing-sm;

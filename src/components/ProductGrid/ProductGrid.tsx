@@ -16,9 +16,14 @@ const ITEMS_PER_PAGE = 4;
 interface ProductGridProps {
   products: Product[];
   onProductClick: (product: Product) => void;
+  showTabs?: boolean;
 }
 
-function ProductGrid({ products, onProductClick }: ProductGridProps) {
+function ProductGrid({
+  products,
+  onProductClick,
+  showTabs = true,
+}: ProductGridProps) {
   const [activeTab, setActiveTab] = useState(0);
   const [page, setPage] = useState(0);
 
@@ -35,25 +40,33 @@ function ProductGrid({ products, onProductClick }: ProductGridProps) {
     <section className={styles.section}>
       <h2 className={styles.title}>Produtos relacionados</h2>
 
-      <nav className={styles.tabs} aria-label="Filtrar por categoria">
-        {TABS.map((tab, index) => (
-          <button
-            key={tab}
-            className={
-              index === activeTab
-                ? `${styles.tab} ${styles.tabActive}`
-                : styles.tab
-            }
-            onClick={() => {
-              setActiveTab(index);
-              setPage(0);
-            }}
-            aria-current={index === activeTab ? "true" : undefined}
-          >
-            {tab}
-          </button>
-        ))}
-      </nav>
+      {showTabs ? (
+        <nav className={styles.tabs} aria-label="Filtrar por categoria">
+          {TABS.map((tab, index) => (
+            <button
+              key={tab}
+              className={
+                index === activeTab
+                  ? `${styles.tab} ${styles.tabActive}`
+                  : styles.tab
+              }
+              onClick={() => {
+                setActiveTab(index);
+                setPage(0);
+              }}
+              aria-current={index === activeTab ? "true" : undefined}
+            >
+              {tab}
+            </button>
+          ))}
+        </nav>
+      ) : (
+        <p className={styles.viewAll}>
+          <a href="#" className={styles.viewAllLink}>
+            Ver todos
+          </a>
+        </p>
+      )}
 
       <div className={styles.carouselWrapper}>
         <button

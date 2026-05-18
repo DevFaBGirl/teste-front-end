@@ -3,11 +3,15 @@ import type { Product } from "./types/product";
 import { useProducts } from "./hooks/useProducts";
 import { Header } from "./components/Header/Header";
 import Banner from "./components/Banner/Banner"; 
+import { PartnerBanners } from "./components/PartnerBanners/PartnerBanners";
 import { Categories } from "./components/Categories/Categories";
 import { Footer } from "./components/Footer/Footer";
 import ProductGrid from "./components/ProductGrid/ProductGrid";
 import Modal from "./components/Modal/Modal";
 import "./styles/main.scss";
+import { BrandShowcase } from "./components/BrandShowcase/BrandShowcase";
+import { Newsletter } from "./components/Newsletter/Newsletter";
+
 
 function App() {
   const { products, loading, error } = useProducts();
@@ -19,7 +23,7 @@ function App() {
         Ir para o conteúdo principal
       </a>
       <Header />
-      <Banner /> 
+      <Banner />
       <Categories />
       <main id="main-content">
         {loading && (
@@ -33,12 +37,28 @@ function App() {
           </p>
         )}
         {!loading && !error && (
-          <ProductGrid
-            products={products}
-            onProductClick={setSelectedProduct}
-          />
+          <>
+            <ProductGrid
+              products={products}
+              onProductClick={setSelectedProduct}
+            />
+            <PartnerBanners />
+            <ProductGrid
+              products={products}
+              onProductClick={setSelectedProduct}
+              showTabs={false}
+            />
+            <PartnerBanners />
+            <BrandShowcase />
+            <ProductGrid
+              products={products}
+              onProductClick={setSelectedProduct}
+              showTabs={false}
+            />
+          </>
         )}
       </main>
+      <Newsletter /> 
       <Footer />
       {selectedProduct && (
         <Modal
