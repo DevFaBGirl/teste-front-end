@@ -1,0 +1,106 @@
+// src/components/Footer/Footer.module.scss
+@use '../../styles/variables' as v;
+
+.footer {
+  background: #271C47;
+;
+  color: #FFFFFF;
+;
+  margin-top: 60px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px v.$spacing-md;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+
+  @media (max-width: v.$breakpoint-tablet) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: v.$breakpoint-mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.brand {
+  p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 12px;
+    line-height: 1.6;
+  }
+}
+
+.social {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+
+  a {
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover { border-color: #FFFFFF; }
+  }
+}
+
+nav {
+  h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  ul { list-style: none; }
+
+  li + li { margin-top: 10px; }
+
+  a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+    text-decoration: none;
+    &:hover { color: #FFFFFF; }
+  }
+}
+
+.contact {
+  h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  address {
+    font-style: normal;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+  }
+}
+
+.bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: center;
+  padding: 16px;
+
+  p {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+}

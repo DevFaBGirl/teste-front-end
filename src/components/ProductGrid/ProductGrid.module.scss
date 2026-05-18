@@ -3,7 +3,7 @@
 .section {
   max-width: 1280px;
   margin: 0 auto;
-  padding: $spacing-xl $spacing-md;
+  padding: 48px $spacing-md $spacing-xl;
   border-top: 1px solid $color-gray-light;
 }
 
@@ -12,10 +12,106 @@
   font-weight: 700;
   color: $color-primary;
   text-align: center;
+  margin-bottom: 0;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: $color-gray-light;
+    margin: 0 16px;
+  }
+}
+
+.tabs {
+  display: flex;
+  width: 100%;
+  max-width: 1280px;
+  height: 40px;
   margin-bottom: $spacing-lg;
+  border: 1px solid $color-gray-light;
+}
+
+.tab {
+  flex: 1;
+  height: 40px;
+  background: $color-white;
+  border: none;
+  border-right: 1px solid $color-gray-light;
+  border-bottom: 1px solid $color-gray-light;
+  font-family: $font-family;
+  font-size: 13px;
+  font-weight: 500;
+  color: $color-text;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+  padding: 0 2px;
+
+  &:last-child {
+    border-right: none;
+  }
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.tabActive {
+  color: $color-primary;
+  font-weight: 700;
+}
+
+.carouselWrapper {
+  position: relative; 
+  display: flex;
+  align-items: center;
+}
+
+.arrowBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $color-gray-light;
+  background: $color-white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $color-text;
+  transition: border-color 0.2s, color 0.2s;
+  z-index: 1;
+
+  &:first-child {
+    left: -40px; 
+  }
+  
+  &:last-child {
+    right: -40px; 
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
 }
 
 .grid {
+  flex: 1;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: $spacing-md;

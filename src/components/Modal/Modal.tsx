@@ -11,11 +11,15 @@ function Modal({ product, onClose }: ModalProps) {
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
+    document.body.style.overflow = "hidden"; // ← adiciona aqui, primeira linha do useEffect
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
     document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = ""; // ← e aqui, antes de fechar o return
+    };
   }, [onClose]);
 
   return (
@@ -24,6 +28,7 @@ function Modal({ product, onClose }: ModalProps) {
       onClick={onClose}
       role="dialog"
       aria-modal="true"
+      aria-labelledby="modal-title"
     >
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <button
@@ -40,7 +45,9 @@ function Modal({ product, onClose }: ModalProps) {
             className={styles.image}
           />
           <div className={styles.info}>
-            <h2 className={styles.name}>{product.productName}</h2>
+            <h2 className={styles.name} id="modal-title">
+              {product.productName}
+            </h2>
             <p className={styles.price}>
               R${" "}
               {product.price.toLocaleString("pt-BR", {
